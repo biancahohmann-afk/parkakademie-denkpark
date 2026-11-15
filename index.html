@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
@@ -10,6 +10,12 @@
     />
     <title>Abenteuer im DenkPark</title>
     <link rel="stylesheet" href="./styles.css" />
+    <style>
+      /* Author CSS must not make the initially hidden success dialog visible. */
+      .success-overlay[hidden] {
+        display: none !important;
+      }
+    </style>
     <script src="./app.js" defer></script>
   </head>
   <body>
@@ -49,7 +55,7 @@
         </aside>
 
         <section class="park-panel" aria-label="Parklandschaft mit versteckten Eichhörnchen">
-          <div id="park" class="park" role="application" aria-label="Parkscene">
+          <div id="park" class="park" role="application" aria-label="Parklandschaft">
             <div class="sun" aria-hidden="true"></div>
             <div class="cloud cloud-one" aria-hidden="true"></div>
             <div class="cloud cloud-two" aria-hidden="true"></div>
@@ -57,16 +63,9 @@
             <div class="hill hill-front" aria-hidden="true"></div>
             <div class="path" aria-hidden="true"></div>
 
-            <div class="tree tree-left" aria-hidden="true">
-              <span></span>
-            </div>
-            <div class="tree tree-center" aria-hidden="true">
-              <span></span>
-            </div>
-            <div class="tree tree-right" aria-hidden="true">
-              <span></span>
-            </div>
-
+            <div class="tree tree-left" aria-hidden="true"><span></span></div>
+            <div class="tree tree-center" aria-hidden="true"><span></span></div>
+            <div class="tree tree-right" aria-hidden="true"><span></span></div>
             <div class="bush bush-left" aria-hidden="true"></div>
             <div class="bush bush-right" aria-hidden="true"></div>
             <div class="bush bush-bottom" aria-hidden="true"></div>
