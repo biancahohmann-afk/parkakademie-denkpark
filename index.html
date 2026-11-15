@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#263b2d" />
-  <meta name="description" content="Ein filmischer Parkspaziergang mit Beobachtungs- und Gedächtnisaufgaben." />
+  <meta name="description" content="Ein immersiver Parkspaziergang mit Beobachtungs- und Gedächtnisaufgaben." />
   <title>Abenteuer im DenkPark | ParkAkademie</title>
   <link rel="stylesheet" href="./styles.css" />
   <script src="./app.js" defer></script>
@@ -17,39 +17,38 @@
       <div class="top-note">Gedächtnis · Aufmerksamkeit · Entdecken</div>
     </header>
 
-    <section class="park-view" id="parkView" aria-label="Interaktiver Spaziergang durch einen Wald">
-      <div class="park-photo" aria-hidden="true"></div>
-      <div class="distant-mist" aria-hidden="true"></div>
-      <div class="light-beams" aria-hidden="true"></div>
-      <div class="trail" aria-hidden="true"></div>
-      <div class="edge-foliage edge-left" aria-hidden="true"></div>
-      <div class="edge-foliage edge-right" aria-hidden="true"></div>
-      <div class="depth-leaves" aria-hidden="true"></div>
+    <section class="park-view" id="parkView" aria-label="Interaktiver Waldspaziergang. Ziehen oder bewegen Sie den Zeiger, um sich umzusehen.">
+      <div class="forest-world" id="forestWorld" aria-hidden="true">
+        <div class="park-photo"></div>
+        <div class="distant-mist"></div>
+        <div class="light-beams"></div>
+        <div class="trail"><i></i><i></i><i></i><i></i></div>
+        <div class="edge-foliage edge-left"></div>
+        <div class="edge-foliage edge-right"></div>
+        <div class="depth-leaves"></div>
+      </div>
 
       <section class="game-panel" aria-labelledby="taskTitle">
-        <div class="level-line"><span id="levelMarker">LEVEL 1</span><span id="levelName">Am Waldrand</span></div>
-        <h2 id="taskTitle">Beobachten und entdecken</h2>
-        <p id="taskDescription" class="task-description"></p>
-        <div id="memoryCue" class="memory-cue" hidden aria-live="polite"></div>
-        <div class="progress-line"><span id="progressText">Gefunden: 0 von 5</span><span id="levelProgressText">Aufgabe 1 von 3</span></div>
-        <div class="progress-track" role="progressbar" aria-label="Aufgabenfortschritt" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span id="progressBar"></span></div>
-        <p id="status" class="status" aria-live="polite">Bewegen Sie Maus oder Finger, um sich umzusehen. Achten Sie auf Bewegung am Wegesrand.</p>
-        <div class="panel-actions">
-          <button id="restartBtn" class="button secondary" type="button">Rundgang neu starten</button>
-          <button id="soundToggle" class="button sound-button" type="button" aria-pressed="false">Rascheln: aus</button>
+        <div class="panel-topline"><div class="level-line"><span id="levelMarker">LEVEL 1</span><span id="levelName">Am Waldrand</span></div><button id="panelToggle" class="panel-toggle" type="button" aria-expanded="true" aria-label="Aufgabenfeld einklappen">−</button></div>
+        <div id="panelContent">
+          <h2 id="taskTitle">Beobachten und entdecken</h2>
+          <p id="taskDescription" class="task-description"></p>
+          <div id="memoryCue" class="memory-cue" hidden aria-live="polite"></div>
+          <div class="progress-line"><span id="progressText">Gefunden: 0 von 5</span><span id="levelProgressText">Aufgabe 1 von 3</span></div>
+          <div class="progress-track" role="progressbar" aria-label="Aufgabenfortschritt" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span id="progressBar"></span></div>
+          <p id="status" class="status" aria-live="polite">Ziehen Sie mit Maus oder Finger, um sich umzusehen.</p>
+          <div class="panel-actions"><button id="restartBtn" class="button secondary" type="button">Neu starten</button><button id="soundToggle" class="button sound-button" type="button" aria-pressed="false">Rascheln: aus</button></div>
         </div>
       </section>
 
       <div id="targetLayer" class="target-layer" aria-label="Tiere und Fundstücke im Wald"></div>
-      <div class="look-hint" aria-hidden="true"><span class="look-dot"></span> Maus bewegen oder mit dem Finger über den Wald streichen</div>
+      <div class="compass" id="compass" aria-hidden="true"><span>N</span><i></i></div>
+      <div class="look-hint" id="lookHint" aria-hidden="true">Ziehen, um dich umzusehen <span>↔</span></div>
       <p class="view-caption" aria-hidden="true">Der Pfad führt tiefer in den Wald</p>
 
       <section id="resultOverlay" class="result-overlay" hidden aria-labelledby="resultTitle">
         <div class="result-card" role="dialog" aria-modal="true" aria-describedby="resultMessage">
-          <p class="eyebrow" id="resultKicker">Abschnitt abgeschlossen</p>
-          <h2 id="resultTitle">Gut beobachtet!</h2>
-          <p id="resultMessage"></p>
-          <div id="resultBreakdown" class="result-breakdown"></div>
+          <p class="eyebrow" id="resultKicker">Abschnitt abgeschlossen</p><h2 id="resultTitle">Gut beobachtet!</h2><p id="resultMessage"></p><div id="resultBreakdown" class="result-breakdown"></div>
           <div class="result-actions"><button id="replayBtn" class="button secondary" type="button">Level wiederholen</button><button id="continueBtn" class="button primary" type="button">Weitergehen</button></div>
         </div>
       </section>
