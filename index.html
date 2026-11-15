@@ -1,96 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#b61f29" />
+    <meta name="theme-color" content="#263b2d" />
     <meta
       name="description"
-      content="Abenteuer im DenkPark – Spielerisches Gedächtnis- und Aufmerksamkeitstraining der ParkAkademie."
+      content="Abenteuer im DenkPark – ein ruhiges Gedächtnis- und Aufmerksamkeitstraining der ParkAkademie."
     />
-    <title>Abenteuer im DenkPark</title>
+    <title>Abenteuer im DenkPark | ParkAkademie</title>
     <link rel="stylesheet" href="./styles.css" />
-    <style>
-      /* Author CSS must not make the initially hidden success dialog visible. */
-      .success-overlay[hidden] {
-        display: none !important;
-      }
-    </style>
     <script src="./app.js" defer></script>
   </head>
   <body>
-    <main class="app-shell">
+    <main class="experience">
       <header class="topbar">
-        <div class="brand" aria-label="ParkAkademie">
-          <span class="brand-icon" aria-hidden="true">🐿️</span>
-          <span class="brand-text">parkakademie<span>-denkpark</span></span>
-        </div>
-        <div class="header-copy">
-          <p class="eyebrow">Spielerisches Gedächtnis- und Aufmerksamkeitstraining</p>
+        <a class="brand" href="#" aria-label="ParkAkademie DenkPark">
+          <span class="brand-mark" aria-hidden="true">P</span>
+          <span class="brand-name">Park<span>Akademie</span><small>Forum für Bildung und Begegnung</small></span>
+        </a>
+        <div class="title-block">
+          <p class="eyebrow">Ein ruhiger Moment im Grünen</p>
           <h1>Abenteuer im DenkPark</h1>
         </div>
+        <div class="topbar-spacer" aria-hidden="true"></div>
       </header>
 
-      <section class="game-layout" aria-label="Park-Spielbereich">
-        <aside class="info-card">
-          <p class="section-kicker">Willkommen im Park</p>
-          <h2>Wer raschelt denn da?</h2>
-          <p class="intro">
-            Im Park haben sich fünf Eichhörnchen versteckt. Suche sie in Ruhe und
-            sammle sie ein. Kein Zeitdruck, nur entspannte Konzentration.
-          </p>
+      <section class="park-view" aria-label="Ihre Aussicht auf den Park">
+        <div class="park-photo" role="img" aria-label="Sonniger Waldweg zwischen hohen Bäumen"></div>
+        <div class="scene-shade" aria-hidden="true"></div>
 
-          <div class="score-box" aria-live="polite" aria-atomic="true">
-            <span>Eichhörnchen gefunden:</span>
-            <strong id="score">0 von 5</strong>
+        <section class="instructions" aria-labelledby="instructions-title">
+          <p class="section-kicker">Aufmerksam durch den Park</p>
+          <h2 id="instructions-title">Entdecken Sie die Eichhörnchen</h2>
+          <p>Fünf Eichhörnchen haben sich am Wegesrand versteckt. Schauen Sie sich in Ruhe um und wählen Sie jedes gefundene Tier aus. Es gibt keinen Zeitdruck.</p>
+          <div class="score" aria-live="polite" aria-atomic="true">
+            <span>Eichhörnchen gefunden</span>
+            <strong id="score">0 <span>von 5</span></strong>
           </div>
+          <p id="status" class="status" aria-live="polite">Nehmen Sie sich Zeit und erkunden Sie den Park.</p>
+          <button id="restartBtn" class="button button-secondary" type="button">Neu beginnen</button>
+        </section>
 
-          <p id="status" class="status" aria-live="polite">
-            Entdecke die Eichhörnchen im Park.
-          </p>
+        <div id="squirrelLayer" class="squirrel-layer" aria-label="Versteckte Eichhörnchen"></div>
 
-          <button id="restartBtn" class="button button-primary" type="button">
-            Neues Spiel
-          </button>
-        </aside>
+        <div class="view-caption" aria-hidden="true">
+          <span class="caption-line"></span>
+          <span>Ein Spaziergang für die Sinne</span>
+        </div>
 
-        <section class="park-panel" aria-label="Parklandschaft mit versteckten Eichhörnchen">
-          <div id="park" class="park" role="application" aria-label="Parklandschaft">
-            <div class="sun" aria-hidden="true"></div>
-            <div class="cloud cloud-one" aria-hidden="true"></div>
-            <div class="cloud cloud-two" aria-hidden="true"></div>
-            <div class="hill hill-back" aria-hidden="true"></div>
-            <div class="hill hill-front" aria-hidden="true"></div>
-            <div class="path" aria-hidden="true"></div>
-
-            <div class="tree tree-left" aria-hidden="true"><span></span></div>
-            <div class="tree tree-center" aria-hidden="true"><span></span></div>
-            <div class="tree tree-right" aria-hidden="true"><span></span></div>
-            <div class="bush bush-left" aria-hidden="true"></div>
-            <div class="bush bush-right" aria-hidden="true"></div>
-            <div class="bush bush-bottom" aria-hidden="true"></div>
-
-            <div class="flowers" aria-hidden="true">
-              <span class="flower flower-one">✿</span>
-              <span class="flower flower-two">✿</span>
-              <span class="flower flower-three">✿</span>
-            </div>
-
-            <div id="squirrelLayer" class="squirrel-layer" aria-live="polite"></div>
-          </div>
-
-          <div id="successOverlay" class="success-overlay" hidden>
-            <div class="success-card" role="status" aria-live="polite">
-              <div class="success-icon" aria-hidden="true">✓</div>
-              <h3>Alle Eichhörnchen gefunden!</h3>
-              <p>Gut gemacht! Du hast alle fünf versteckten Eichhörnchen entdeckt.</p>
-              <button id="playAgainBtn" class="button button-primary" type="button">
-                Noch einmal spielen
-              </button>
-            </div>
+        <section id="successOverlay" class="success-overlay" hidden aria-labelledby="successTitle">
+          <div class="success-card" role="dialog" aria-modal="true" aria-describedby="successMessage">
+            <p class="section-kicker">Aufgabe abgeschlossen</p>
+            <h2 id="successTitle">Alle Eichhörnchen entdeckt</h2>
+            <p id="successMessage">Gut beobachtet. Genießen Sie Ihren Spaziergang durch den DenkPark.</p>
+            <button id="playAgainBtn" class="button button-primary" type="button">Noch einmal spielen</button>
           </div>
         </section>
       </section>
+
+      <footer class="footer">
+        <span>ParkAkademie 55plus</span>
+        <span class="footer-divider" aria-hidden="true">|</span>
+        <span>Gedächtnis- und Aufmerksamkeitstraining</span>
+      </footer>
     </main>
   </body>
 </html>
