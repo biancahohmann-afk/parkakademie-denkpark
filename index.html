@@ -7,6 +7,37 @@
     <meta name="description" content="Ein spannender, barrierearm gestalteter 3D-Parkspaziergang mit Suchaufgaben in mehreren Levels." />
     <title>Abenteuer im DenkPark | ParkAkademie</title>
     <link rel="stylesheet" href="./styles.css" />
+    <style>
+      /* Subtle, automatic viewpoint movement makes the walk visible at startup. */
+      .park-photo {
+        animation: gentle-park-walk 7s ease-in-out infinite alternate;
+        will-change: translate, scale;
+      }
+
+      .ground-path {
+        animation: path-approach 7s ease-in-out infinite alternate;
+        transform-origin: center bottom;
+        will-change: scale;
+      }
+
+      @keyframes gentle-park-walk {
+        from { translate: 0 0; scale: 1; }
+        to { translate: 0 -10px; scale: 1.035; }
+      }
+
+      @keyframes path-approach {
+        from { scale: 1 1; }
+        to { scale: 1.04 1.08; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .park-photo,
+        .ground-path {
+          animation: none;
+          will-change: auto;
+        }
+      }
+    </style>
     <script src="./app.js" defer></script>
   </head>
   <body>
