@@ -1,119 +1,54 @@
 <!doctype html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#263b2d" />
-    <meta name="description" content="Ein spannender, barrierearm gestalteter 3D-Parkspaziergang mit Suchaufgaben in mehreren Levels." />
-    <title>Abenteuer im DenkPark | ParkAkademie</title>
-    <link rel="stylesheet" href="./styles.css" />
-    <style>
-      /* The forward-and-back camera movement is deliberately apparent from the first moment. */
-      .park-photo {
-        animation: park-walk 2.8s cubic-bezier(.45, 0, .55, 1) infinite alternate;
-        will-change: translate, scale;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#263b2d" />
+  <meta name="description" content="Ein immersiver Parkspaziergang mit Suchaufgaben in mehreren Levels." />
+  <title>Abenteuer im DenkPark | ParkAkademie</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main class="experience">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">P</span><span>Park<span class="brand-red">Akademie</span><small>Forum für Bildung und Begegnung</small></span></div>
+      <div class="title-block"><p>Ein Spaziergang für die Sinne</p><h1>Abenteuer im DenkPark</h1></div>
+      <div class="top-note">Gedächtnis · Aufmerksamkeit · Entdecken</div>
+    </header>
 
-      .ground-path {
-        animation: path-walk 2.8s cubic-bezier(.45, 0, .55, 1) infinite alternate;
-        transform-origin: center bottom;
-        will-change: scale;
-      }
+    <section class="park-view" id="parkView" aria-label="Bewegte Aussicht beim Spaziergang durch den Park">
+      <div class="park-photo" aria-hidden="true"></div>
+      <div class="light-shaft" aria-hidden="true"></div>
+      <div class="path-surface" aria-hidden="true"></div>
+      <div class="foreground foreground-left" aria-hidden="true"></div>
+      <div class="foreground foreground-right" aria-hidden="true"></div>
+      <div class="motion-cue" aria-hidden="true"><span></span><span></span><span></span></div>
 
-      .depth-haze {
-        animation: light-through-trees 4.5s ease-in-out infinite alternate;
-        will-change: opacity;
-      }
-
-      @keyframes park-walk {
-        0% { translate: 0 16px; scale: 1.015; }
-        55% { translate: 0 -12px; scale: 1.09; }
-        100% { translate: 0 8px; scale: 1.04; }
-      }
-
-      @keyframes path-walk {
-        0% { scale: 1 1; }
-        55% { scale: 1.09 1.16; }
-        100% { scale: 1.025 1.06; }
-      }
-
-      @keyframes light-through-trees {
-        0% { opacity: .8; }
-        50% { opacity: 1; }
-        100% { opacity: .86; }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .park-photo,
-        .ground-path,
-        .depth-haze {
-          animation: none;
-          will-change: auto;
-        }
-      }
-    </style>
-    <script src="./app.js" defer></script>
-  </head>
-  <body>
-    <main class="experience">
-      <header class="topbar">
-        <a class="brand" href="#" aria-label="ParkAkademie DenkPark">
-          <span class="brand-mark" aria-hidden="true">P</span>
-          <span class="brand-name">Park<span>Akademie</span><small>Forum für Bildung und Begegnung</small></span>
-        </a>
-        <div class="title-block">
-          <p class="eyebrow">Ein Spaziergang für die Sinne</p>
-          <h1>Abenteuer im DenkPark</h1>
-        </div>
-        <div class="topbar-note">Gedächtnis · Aufmerksamkeit · Entdecken</div>
-      </header>
-
-      <section class="park-view" id="parkView" aria-label="Interaktiver Parkspaziergang">
-        <div class="park-photo" aria-hidden="true"></div>
-        <div class="depth-haze" aria-hidden="true"></div>
-        <div class="ground-path" aria-hidden="true"></div>
-        <div class="foreground foreground-left" aria-hidden="true"></div>
-        <div class="foreground foreground-right" aria-hidden="true"></div>
-
-        <section class="game-panel" aria-labelledby="taskTitle">
-          <div class="level-heading">
-            <span class="level-marker" id="levelMarker">LEVEL 1</span>
-            <span id="levelName">Der erste Spaziergang</span>
-          </div>
-          <h2 id="taskTitle">Entdecken Sie die Eichhörnchen</h2>
-          <p id="taskDescription" class="task-description"></p>
-          <div class="progress-meta">
-            <span id="progressText">Gefunden: 0 von 5</span>
-            <span id="levelProgressText">Aufgabe 1 von 3</span>
-          </div>
-          <div class="progress-track" role="progressbar" aria-label="Fortschritt in der Aufgabe" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0">
-            <span id="progressBar"></span>
-          </div>
-          <p id="status" class="status" aria-live="polite">Nehmen Sie sich Zeit und erkunden Sie den Park.</p>
-          <button id="restartBtn" class="button button-secondary" type="button">Neu beginnen</button>
-        </section>
-
-        <div id="targetLayer" class="target-layer" aria-label="Suchobjekte im Park"></div>
-        <div class="view-caption" aria-hidden="true"><span></span>Sie gehen den Weg Schritt für Schritt weiter</div>
-
-        <section id="resultOverlay" class="result-overlay" hidden aria-labelledby="resultTitle">
-          <div class="result-card" role="dialog" aria-modal="true" aria-describedby="resultMessage">
-            <p class="section-kicker" id="resultKicker">Aufgabe abgeschlossen</p>
-            <h2 id="resultTitle">Gut beobachtet!</h2>
-            <p id="resultMessage" class="result-message"></p>
-            <div id="resultBreakdown" class="result-breakdown"></div>
-            <div class="result-actions">
-              <button id="replayBtn" class="button button-secondary" type="button">Level wiederholen</button>
-              <button id="continueBtn" class="button button-primary" type="button">Weitergehen</button>
-            </div>
-          </div>
-        </section>
+      <section class="game-panel" aria-labelledby="taskTitle">
+        <div class="level-line"><span id="levelMarker">LEVEL 1</span><span id="levelName">Der erste Spaziergang</span></div>
+        <h2 id="taskTitle">Entdecken Sie die Eichhörnchen</h2>
+        <p id="taskDescription" class="task-description"></p>
+        <div class="progress-line"><span id="progressText">Gefunden: 0 von 5</span><span id="levelProgressText">Aufgabe 1 von 3</span></div>
+        <div class="progress-track" role="progressbar" aria-label="Aufgabenfortschritt" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span id="progressBar"></span></div>
+        <p id="status" class="status" aria-live="polite">Der Spaziergang beginnt. Achten Sie auf Bewegung am Wegesrand.</p>
+        <button id="restartBtn" class="button secondary" type="button">Rundgang neu starten</button>
       </section>
 
-      <footer class="footer">
-        <span>ParkAkademie 55plus</span><span class="footer-divider" aria-hidden="true">|</span>
-        <span>Ohne Zeitdruck – in Ihrem eigenen Tempo</span>
-      </footer>
-    </main>
-  </body>
+      <div id="targetLayer" class="target-layer" aria-label="Tiere und Fundstücke"></div>
+      <p class="view-caption" aria-hidden="true">Der Weg führt weiter durch den Park</p>
+
+      <section id="resultOverlay" class="result-overlay" hidden aria-labelledby="resultTitle">
+        <div class="result-card" role="dialog" aria-modal="true" aria-describedby="resultMessage">
+          <p class="eyebrow" id="resultKicker">Abschnitt abgeschlossen</p>
+          <h2 id="resultTitle">Gut beobachtet!</h2>
+          <p id="resultMessage"></p>
+          <div id="resultBreakdown" class="result-breakdown"></div>
+          <div class="result-actions"><button id="replayBtn" class="button secondary" type="button">Level wiederholen</button><button id="continueBtn" class="button primary" type="button">Weitergehen</button></div>
+        </div>
+      </section>
+    </section>
+    <footer>ParkAkademie 55plus <span aria-hidden="true">•</span> Ohne Zeitdruck – in Ihrem eigenen Tempo</footer>
+  </main>
+</body>
 </html>
