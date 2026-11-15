@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Abenteuer im DenkPark – spielerisches Gedächtnis- und Aufmerksamkeitstraining der ParkAkademie."
+    />
+    <title>Abenteuer im DenkPark</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="brand-mark">ParkAkademie</span>
+          <span class="brand-sub">55plus</span>
+        </div>
+        <div class="header-copy">
+          <p class="eyebrow">Spielerisches Training</p>
+          <h1>Abenteuer im DenkPark</h1>
+        </div>
+      </header>
+
+      <main class="game-layout">
+        <section class="info-panel" aria-labelledby="spieltitel">
+          <p class="section-kicker">Willkommen</p>
+          <h2 id="spieltitel">Der ruhige Park voller Entdeckungen</h2>
+          <p class="intro">
+            Suche im Park die versteckten Eichhörnchen. Jeder Fund zählt – ohne
+            Zeitdruck, einfach entspannt und gut sichtbar.
+          </p>
+
+          <div class="score-card" aria-live="polite">
+            <span class="score-label">Eichhörnchen gefunden:</span>
+            <strong id="scoreText">0 von 5</strong>
+          </div>
+
+          <button id="restartBtn" class="button button-primary" type="button">
+            Neues Spiel
+          </button>
+        </section>
+
+        <section class="park-panel" aria-label="Parkspielbereich">
+          <div class="park-scene" id="parkScene">
+            <div class="park-illustration" aria-hidden="true">
+              <div class="sun"></div>
+              <div class="cloud cloud-left"></div>
+              <div class="cloud cloud-right"></div>
+              <div class="tree tree-left"></div>
+              <div class="tree tree-right"></div>
+              <div class="bush bush-left"></div>
+              <div class="bush bush-right"></div>
+              <div class="path"></div>
+            </div>
+            <div id="squirrelLayer" class="squirrel-layer" aria-live="polite"></div>
+          </div>
+
+          <div class="message-box" id="messageBox" aria-live="polite">
+            Entdecke die Eichhörnchen im Park.
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
