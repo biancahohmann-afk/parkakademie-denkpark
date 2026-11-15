@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#263b2d" />
-  <meta name="description" content="Ein immersiver Parkspaziergang mit Suchaufgaben in mehreren Levels." />
+  <meta name="description" content="Ein filmischer Parkspaziergang mit abwechslungsreichen Beobachtungs- und Gedächtnisaufgaben." />
   <title>Abenteuer im DenkPark | ParkAkademie</title>
   <link rel="stylesheet" href="./styles.css" />
   <script src="./app.js" defer></script>
@@ -17,18 +17,22 @@
       <div class="top-note">Gedächtnis · Aufmerksamkeit · Entdecken</div>
     </header>
 
-    <section class="park-view" id="parkView" aria-label="Bewegte Aussicht beim Spaziergang durch den Park">
+    <section class="park-view" id="parkView" aria-label="Filmischer Spaziergang durch den Park">
       <div class="park-photo" aria-hidden="true"></div>
-      <div class="light-shaft" aria-hidden="true"></div>
-      <div class="path-surface" aria-hidden="true"></div>
-      <div class="foreground foreground-left" aria-hidden="true"></div>
-      <div class="foreground foreground-right" aria-hidden="true"></div>
-      <div class="motion-cue" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="distant-mist" aria-hidden="true"></div>
+      <div class="light-beams" aria-hidden="true"></div>
+      <div class="trail" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="passing-tree tree-left" aria-hidden="true"></div>
+      <div class="passing-tree tree-right" aria-hidden="true"></div>
+      <div class="passing-tree tree-left tree-left-two" aria-hidden="true"></div>
+      <div class="passing-tree tree-right tree-right-two" aria-hidden="true"></div>
+      <div class="leaf-drift" aria-hidden="true">✦ <span>✦</span> <b>✦</b></div>
 
       <section class="game-panel" aria-labelledby="taskTitle">
         <div class="level-line"><span id="levelMarker">LEVEL 1</span><span id="levelName">Der erste Spaziergang</span></div>
         <h2 id="taskTitle">Entdecken Sie die Eichhörnchen</h2>
         <p id="taskDescription" class="task-description"></p>
+        <div id="memoryCue" class="memory-cue" hidden aria-live="polite"></div>
         <div class="progress-line"><span id="progressText">Gefunden: 0 von 5</span><span id="levelProgressText">Aufgabe 1 von 3</span></div>
         <div class="progress-track" role="progressbar" aria-label="Aufgabenfortschritt" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span id="progressBar"></span></div>
         <p id="status" class="status" aria-live="polite">Der Spaziergang beginnt. Achten Sie auf Bewegung am Wegesrand.</p>
