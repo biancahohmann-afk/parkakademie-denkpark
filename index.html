@@ -8,31 +8,45 @@
     <title>Abenteuer im DenkPark | ParkAkademie</title>
     <link rel="stylesheet" href="./styles.css" />
     <style>
-      /* Subtle, automatic viewpoint movement makes the walk visible at startup. */
+      /* The forward-and-back camera movement is deliberately apparent from the first moment. */
       .park-photo {
-        animation: gentle-park-walk 7s ease-in-out infinite alternate;
+        animation: park-walk 2.8s cubic-bezier(.45, 0, .55, 1) infinite alternate;
         will-change: translate, scale;
       }
 
       .ground-path {
-        animation: path-approach 7s ease-in-out infinite alternate;
+        animation: path-walk 2.8s cubic-bezier(.45, 0, .55, 1) infinite alternate;
         transform-origin: center bottom;
         will-change: scale;
       }
 
-      @keyframes gentle-park-walk {
-        from { translate: 0 0; scale: 1; }
-        to { translate: 0 -10px; scale: 1.035; }
+      .depth-haze {
+        animation: light-through-trees 4.5s ease-in-out infinite alternate;
+        will-change: opacity;
       }
 
-      @keyframes path-approach {
-        from { scale: 1 1; }
-        to { scale: 1.04 1.08; }
+      @keyframes park-walk {
+        0% { translate: 0 16px; scale: 1.015; }
+        55% { translate: 0 -12px; scale: 1.09; }
+        100% { translate: 0 8px; scale: 1.04; }
+      }
+
+      @keyframes path-walk {
+        0% { scale: 1 1; }
+        55% { scale: 1.09 1.16; }
+        100% { scale: 1.025 1.06; }
+      }
+
+      @keyframes light-through-trees {
+        0% { opacity: .8; }
+        50% { opacity: 1; }
+        100% { opacity: .86; }
       }
 
       @media (prefers-reduced-motion: reduce) {
         .park-photo,
-        .ground-path {
+        .ground-path,
+        .depth-haze {
           animation: none;
           will-change: auto;
         }
