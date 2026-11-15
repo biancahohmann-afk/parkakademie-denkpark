@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#b61f29" />
+    <meta
+      name="description"
+      content="Abenteuer im DenkPark – Spielerisches Gedächtnis- und Aufmerksamkeitstraining der ParkAkademie."
+    />
+    <title>Abenteuer im DenkPark</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand" aria-label="ParkAkademie">
+          <span class="brand-icon" aria-hidden="true">🐿️</span>
+          <span class="brand-text">parkakademie<span>-denkpark</span></span>
+        </div>
+        <div class="header-copy">
+          <p class="eyebrow">Spielerisches Gedächtnis- und Aufmerksamkeitstraining</p>
+          <h1>Abenteuer im DenkPark</h1>
+        </div>
+      </header>
+
+      <section class="game-layout" aria-label="Park-Spielbereich">
+        <aside class="info-card">
+          <p class="section-kicker">Willkommen im Park</p>
+          <h2>Wer raschelt denn da?</h2>
+          <p class="intro">
+            Im Park haben sich fünf Eichhörnchen versteckt. Suche sie in Ruhe und
+            sammle sie ein. Kein Zeitdruck, nur entspannte Konzentration.
+          </p>
+
+          <div class="score-box" aria-live="polite" aria-atomic="true">
+            <span>Eichhörnchen gefunden:</span>
+            <strong id="score">0 von 5</strong>
+          </div>
+
+          <p id="status" class="status" aria-live="polite">
+            Entdecke die Eichhörnchen im Park.
+          </p>
+
+          <button id="restartBtn" class="button button-primary" type="button">
+            Neues Spiel
+          </button>
+        </aside>
+
+        <section class="park-panel" aria-label="Parklandschaft mit versteckten Eichhörnchen">
+          <div id="park" class="park" role="application" aria-label="Parkscene">
+            <div class="sun" aria-hidden="true"></div>
+            <div class="cloud cloud-one" aria-hidden="true"></div>
+            <div class="cloud cloud-two" aria-hidden="true"></div>
+            <div class="hill hill-back" aria-hidden="true"></div>
+            <div class="hill hill-front" aria-hidden="true"></div>
+            <div class="path" aria-hidden="true"></div>
+
+            <div class="tree tree-left" aria-hidden="true">
+              <span></span>
+            </div>
+            <div class="tree tree-center" aria-hidden="true">
+              <span></span>
+            </div>
+            <div class="tree tree-right" aria-hidden="true">
+              <span></span>
+            </div>
+
+            <div class="bush bush-left" aria-hidden="true"></div>
+            <div class="bush bush-right" aria-hidden="true"></div>
+            <div class="bush bush-bottom" aria-hidden="true"></div>
+
+            <div class="flowers" aria-hidden="true">
+              <span class="flower flower-one">✿</span>
+              <span class="flower flower-two">✿</span>
+              <span class="flower flower-three">✿</span>
+            </div>
+
+            <div id="squirrelLayer" class="squirrel-layer" aria-live="polite"></div>
+          </div>
+
+          <div id="successOverlay" class="success-overlay" hidden>
+            <div class="success-card" role="status" aria-live="polite">
+              <div class="success-icon" aria-hidden="true">✓</div>
+              <h3>Alle Eichhörnchen gefunden!</h3>
+              <p>Gut gemacht! Du hast alle fünf versteckten Eichhörnchen entdeckt.</p>
+              <button id="playAgainBtn" class="button button-primary" type="button">
+                Noch einmal spielen
+              </button>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
