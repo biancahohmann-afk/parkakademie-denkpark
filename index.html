@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#263b2d" />
-  <meta name="description" content="Ein filmischer Parkspaziergang mit abwechslungsreichen Beobachtungs- und Gedächtnisaufgaben." />
+  <meta name="description" content="Ein filmischer Parkspaziergang mit Beobachtungs- und Gedächtnisaufgaben." />
   <title>Abenteuer im DenkPark | ParkAkademie</title>
   <link rel="stylesheet" href="./styles.css" />
   <script src="./app.js" defer></script>
@@ -17,30 +17,32 @@
       <div class="top-note">Gedächtnis · Aufmerksamkeit · Entdecken</div>
     </header>
 
-    <section class="park-view" id="parkView" aria-label="Filmischer Spaziergang durch den Park">
+    <section class="park-view" id="parkView" aria-label="Interaktiver Spaziergang durch einen Wald">
       <div class="park-photo" aria-hidden="true"></div>
       <div class="distant-mist" aria-hidden="true"></div>
       <div class="light-beams" aria-hidden="true"></div>
-      <div class="trail" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      <div class="passing-tree tree-left" aria-hidden="true"></div>
-      <div class="passing-tree tree-right" aria-hidden="true"></div>
-      <div class="passing-tree tree-left tree-left-two" aria-hidden="true"></div>
-      <div class="passing-tree tree-right tree-right-two" aria-hidden="true"></div>
-      <div class="leaf-drift" aria-hidden="true">✦ <span>✦</span> <b>✦</b></div>
+      <div class="trail" aria-hidden="true"></div>
+      <div class="edge-foliage edge-left" aria-hidden="true"></div>
+      <div class="edge-foliage edge-right" aria-hidden="true"></div>
+      <div class="depth-leaves" aria-hidden="true"></div>
 
       <section class="game-panel" aria-labelledby="taskTitle">
-        <div class="level-line"><span id="levelMarker">LEVEL 1</span><span id="levelName">Der erste Spaziergang</span></div>
-        <h2 id="taskTitle">Entdecken Sie die Eichhörnchen</h2>
+        <div class="level-line"><span id="levelMarker">LEVEL 1</span><span id="levelName">Am Waldrand</span></div>
+        <h2 id="taskTitle">Beobachten und entdecken</h2>
         <p id="taskDescription" class="task-description"></p>
         <div id="memoryCue" class="memory-cue" hidden aria-live="polite"></div>
         <div class="progress-line"><span id="progressText">Gefunden: 0 von 5</span><span id="levelProgressText">Aufgabe 1 von 3</span></div>
         <div class="progress-track" role="progressbar" aria-label="Aufgabenfortschritt" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span id="progressBar"></span></div>
-        <p id="status" class="status" aria-live="polite">Der Spaziergang beginnt. Achten Sie auf Bewegung am Wegesrand.</p>
-        <button id="restartBtn" class="button secondary" type="button">Rundgang neu starten</button>
+        <p id="status" class="status" aria-live="polite">Bewegen Sie Maus oder Finger, um sich umzusehen. Achten Sie auf Bewegung am Wegesrand.</p>
+        <div class="panel-actions">
+          <button id="restartBtn" class="button secondary" type="button">Rundgang neu starten</button>
+          <button id="soundToggle" class="button sound-button" type="button" aria-pressed="false">Rascheln: aus</button>
+        </div>
       </section>
 
-      <div id="targetLayer" class="target-layer" aria-label="Tiere und Fundstücke"></div>
-      <p class="view-caption" aria-hidden="true">Der Weg führt weiter durch den Park</p>
+      <div id="targetLayer" class="target-layer" aria-label="Tiere und Fundstücke im Wald"></div>
+      <div class="look-hint" aria-hidden="true"><span class="look-dot"></span> Maus bewegen oder mit dem Finger über den Wald streichen</div>
+      <p class="view-caption" aria-hidden="true">Der Pfad führt tiefer in den Wald</p>
 
       <section id="resultOverlay" class="result-overlay" hidden aria-labelledby="resultTitle">
         <div class="result-card" role="dialog" aria-modal="true" aria-describedby="resultMessage">
